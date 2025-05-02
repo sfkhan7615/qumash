@@ -40,7 +40,7 @@ export default function MainHeader() {
                 <li className="lvl1"><a href="#"><b>Buy Now!</b> <i className="anm anm-angle-down-l"></i></a></li>
               </ul>
             </nav>
-
+ 
           </div>
           <div className="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
             <div className="logo">
