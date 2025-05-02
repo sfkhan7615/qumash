@@ -16,6 +16,7 @@ export type Product = {
   isFeatured?: boolean
   inStock: boolean
   tags: string[]
+  label?: string
 }
 
 const products: Product[] = [
@@ -29,10 +30,7 @@ const products: Product[] = [
     rating: 4.5,
     reviewCount: 128,
     images: [
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
+      "/images/collection/ClassicCottonTShirt.webp",
     ],
     category: "men",
     isNew: true,
@@ -50,9 +48,7 @@ const products: Product[] = [
     rating: 4.2,
     reviewCount: 95,
     images: [
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
+      "/images/collection/BlackSlimFitJeans.webp",
     ],
     category: "men",
     isFeatured: true,
@@ -67,7 +63,7 @@ const products: Product[] = [
     discount: 0,
     rating: 4.8,
     reviewCount: 210,
-    images: ["/placeholder.svg?height=600&width=600", "/placeholder.svg?height=600&width=600"],
+    images: ["/images/collection/Oversized_Hoodie.webp"],
     category: "women",
     isNew: true,
     isFeatured: true,
@@ -83,9 +79,7 @@ const products: Product[] = [
     rating: 4.6,
     reviewCount: 175,
     images: [
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
+      "/images/collection/RunningShoes.webp",
     ],
     category: "accessories",
     isFeatured: true,
@@ -101,7 +95,7 @@ const products: Product[] = [
     discount: 10,
     rating: 4.4,
     reviewCount: 88,
-    images: ["/placeholder.svg?height=600&width=600", "/placeholder.svg?height=600&width=600"],
+    images: ["/images/collection/leathercrossbodybags.webp"],
     category: "accessories",
     isFeatured: true,
     inStock: true,
@@ -115,7 +109,7 @@ const products: Product[] = [
     discount: 0,
     rating: 4.3,
     reviewCount: 62,
-    images: ["/placeholder.svg?height=600&width=600"],
+    images: ["/images/collection/kidsGraphics.webp"],
     category: "kids",
     isNew: true,
     isFeatured: true,
@@ -124,18 +118,18 @@ const products: Product[] = [
   },
   {
     id: "7",
-    name: "Wireless Headphones",
-    description: "High-quality wireless headphones with noise cancellation.",
+    name: "Kurtis",
+    description: "Versatile kurtis for every mood.",
     price: 149.99,
     originalPrice: 199.99,
     discount: 25,
     rating: 4.7,
     reviewCount: 203,
-    images: ["/placeholder.svg?height=600&width=600", "/placeholder.svg?height=600&width=600"],
+    images: ["/images/collection/kurti.webp"],
     category: "accessories",
     isFeatured: true,
     inStock: true,
-    tags: ["headphones", "wireless", "audio"],
+    tags: ["kurti", "dress", "casual"],
   },
   {
     id: "8",
@@ -146,9 +140,7 @@ const products: Product[] = [
     rating: 4.5,
     reviewCount: 117,
     images: [
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
-      "/placeholder.svg?height=600&width=600",
+      "/images/collection/SummerDress.webp",
     ],
     category: "women",
     isFeatured: true,

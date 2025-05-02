@@ -49,7 +49,7 @@ export default function FeaturedProducts() {
               {product.discount > 0 ? (
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium text-muted-foreground line-through">
-                    ${product.originalPrice.toFixed(2)}
+                    ${product.originalPrice?.toFixed(2)}
                   </span>
                   <span className="font-medium text-destructive">${product.price.toFixed(2)}</span>
                 </div>

@@ -5,25 +5,25 @@ const categories = [
   {
     id: "men",
     name: "Men",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/images/product-images/mens_cat.webp",
     href: "/categories/men",
   },
   {
     id: "women",
     name: "Women",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/images/product-images/women_cat.webp",
     href: "/categories/women",
   },
   {
     id: "kids",
     name: "Kids",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/images/product-images/kids_cat.webp",
     href: "/categories/kids",
   },
   {
     id: "accessories",
     name: "Accessories",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/images/product-images/acceroies.webp",
     href: "/categories/accessories",
   },
 ]

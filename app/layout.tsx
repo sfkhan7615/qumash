@@ -12,6 +12,7 @@ import TopHeader from "@/components/layout/top-header";
 import $ from 'jquery';
 import "jquery.cookie"; // Import the jQuery Cookie plugin
 import MainHeader from "@/components/layout/main-header";
+import MobileHeader from "@/components/layout/mobile-header";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -54,24 +55,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <head>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <title>NextCommerce | Modern E-commerce Platform</title>
-          <meta name="description" content="A modern e-commerce platform built with Next.js and NestJS" />
+          <title>Qumash | Wear The Vibe</title>
+          <meta name="description" content="Coming soon" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="shortcut icon" href="assets/images/favicon.png" />
-          <link rel="stylesheet" href="assets/css/plugins.css" />
-          <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-          <link rel="stylesheet" href="assets/css/style.css" />
-          <link rel="stylesheet" href="assets/css/responsive.css" />
+          <link rel="shortcut icon" href="/images/favicon.png" />
+          <link rel="stylesheet" href="/css/plugins.css" />
+          <link rel="stylesheet" href="/css/bootstrap.min.css" />
+          <link rel="stylesheet" href="/css/style.css" />
+          <link rel="stylesheet" href="/css/responsive.css" />
         </head>
         <body className="template-index belle template-index-belle">
           <div id="pre-loader">
-            <img src="assets/images/loader.gif" alt="Loading..." />
+            <img src="/images/loader.gif" alt="Loading..." />
           </div>
           <div className="pageWrapper">
             <TopHeader />
             <MainHeader />
+            <MobileHeader />
             <CartProvider>
-              <div className="flex min-h-screen flex-col">
+              <div id="page-content" className="flex min-h-screen flex-col">
                 <main className="flex-1">{children}</main>
                 <Footer />
               </div>
@@ -80,35 +82,35 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
           {/* Load jQuery before interactive */}
           <Script
-            src="assets/js/vendor/jquery-3.3.1.min.js"
+            src="/js/vendor/jquery-3.3.1.min.js"
             strategy="beforeInteractive"
           />
           <Script
-            src="assets/js/vendor/jquery.cookie.js"
+            src="/js/vendor/jquery.cookie.js"
             strategy="afterInteractive"
           />
           <Script
-            src="assets/js/vendor/wow.min.js"
+            src="/js/vendor/wow.min.js"
             strategy="afterInteractive"
           />
           <Script
-            src="assets/js/bootstrap.min.js"
+            src="/js/bootstrap.min.js"
             strategy="afterInteractive"
           />
           <Script
-            src="assets/js/plugins.js"
+            src="/js/plugins.js"
             strategy="afterInteractive"
           />
           <Script
-            src="assets/js/popper.min.js"
+            src="/js/popper.min.js"
             strategy="afterInteractive"
           />
           <Script
-            src="assets/js/lazysizes.js"
+            src="/js/lazysizes.js"
             strategy="afterInteractive"
           />
           <Script
-            src="assets/js/main.js"
+            src="/js/main.js"
             strategy="afterInteractive"
           />
 
