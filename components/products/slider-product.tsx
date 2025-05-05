@@ -61,7 +61,28 @@ const products = [
 ]
 
 export default function SliderProduct() {
-  const [activeTab, setActiveTab] = useState("women") // State for active tab
+  const [activeTab, setActiveTab] = useState("women")
+  const [color, setColor] = useState('Red');
+  const [size, setSize] = useState('XS');
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantityChange = (e: any) => {
+    const value = parseInt(e.target.value, 10);
+    setQuantity(isNaN(value) ? 1 : value);
+  };
+
+  const increaseQty = () => setQuantity(prev => prev + 1);
+  const decreaseQty = () => setQuantity(prev => Math.max(1, prev - 1));
+
+  const handleSubmit = () => {
+    const payload = {
+      color,
+      size,
+      quantity,
+    };
+    console.log('Form Submitted:', payload);
+    // TODO: Post this data to server
+  };// State for active tab
 
   // Function to switch tabs
   const switchTab = (tab: string) => {
@@ -109,11 +130,11 @@ export default function SliderProduct() {
                           <button className="btn btn-addto-cart" type="button" tabIndex={0}>Add To Cart</button>
                         </form>
                         <div className="button-set">
-                          <a href="javascript:void(0)" title="Quick View" className="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+                          <a href="#" title="Quick View" className="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
                             <i className="icon anm anm-search-plus-r"></i>
                           </a>
                           <div className="wishlist-btn">
-                            <a className="wishlist add-to-wishlist" href="wishlist.html">
+                            <a className="wishlist add-to-wishlist" href="#">
                               <i className="icon anm anm-heart-l"></i>
                             </a>
                           </div>
@@ -149,6 +170,167 @@ export default function SliderProduct() {
                   </div>
                 </div>
 
+              </div>
+              <div className="modal fade quick-view-popup" id="content_quickview">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-body">
+                      <div id="ProductSection-product-template" className="product-template__container prstyle1">
+                        <div className="product-single">
+                          <a href="javascript:void()" data-dismiss="modal" className="model-close-btn pull-right"
+                            title="close"><span className="icon icon anm anm-times-l"></span></a>
+                          <div className="row">
+                            <div className="col-lg-6 col-md-6 col-sm-12 col-12">
+                              <div className="product-details-img">
+                                <div className="pl-20">
+                                  <img src="images/product-detail-page/camelia-reversible-big1.jpg"
+                                    alt="" />
+                                </div>
+                              </div>
+                            </div>
+                            <div className="col-lg-6 col-md-6 col-sm-12 col-12">
+                              <div className="product-single__meta">
+                                <h2 className="product-single__title">Product Quick View Popup</h2>
+                                <div className="prInfoRow">
+                                  <div className="product-stock"> <span className="instock ">In Stock</span> <span
+                                    className="outstock hide">Unavailable</span> </div>
+                                  <div className="product-sku">SKU: <span
+                                    className="variant-sku">19115-rdxs</span></div>
+                                </div>
+                                <p className="product-single__price product-single__price-product-template">
+                                  <span className="visually-hidden">Regular price</span>
+                                  <s id="ComparePrice-product-template"><span
+                                    className="money">$600.00</span></s>
+                                  <span
+                                    className="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
+                                    <span id="ProductPrice-product-template"><span
+                                      className="money">$500.00</span></span>
+                                  </span>
+                                </p>
+                                <div className="product-single__description rte">
+                                  Belle Multipurpose Bootstrap 4 Html Template that will give you and your
+                                  customers a smooth shopping experience which can be used for various
+                                  kinds of stores such as fashion,...
+                                </div>
+
+                                <form
+                                  method="post"
+                                  action="http://annimexweb.com/cart/add"
+                                  id="product_form_10508262282"
+                                  className="product-form product-form-product-template hidedropdown"
+                                  encType="multipart/form-data"
+                                  acceptCharset="UTF-8"
+                                >
+                                  <div className="swatch clearfix swatch-0 option1" data-option-index="0">
+                                    <div className="product-form__item">
+                                      <label className="header">
+                                        Color: <span className="slVariant">{color}</span>
+                                      </label>
+
+                                      {['Red', 'Blue', 'Green', 'Gray'].map((col, i) => (
+                                        <div key={col} data-value={col} className={`swatch-element color ${col.toLowerCase()} available`}>
+                                          <input
+                                            className="swatchInput"
+                                            id={`swatch-0-${col.toLowerCase()}`}
+                                            type="radio"
+                                            name="option-0"
+                                            value={col}
+                                            checked={color === col}
+                                            onChange={() => setColor(col)}
+                                          />
+                                          <label
+                                            className="swatchLbl color medium rectangle"
+                                            htmlFor={`swatch-0-${col.toLowerCase()}`}
+                                            style={{
+                                              backgroundImage: `url(images/product-detail-page/variant1-${i + 1}.jpg)`,
+                                            }}
+                                            title={col}
+                                          ></label>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+
+                                  <div className="swatch clearfix swatch-1 option2" data-option-index="1">
+                                    <div className="product-form__item">
+                                      <label className="header">
+                                        Size: <span className="slVariant">{size}</span>
+                                      </label>
+
+                                      {['XS', 'S', 'M', 'L'].map((s) => (
+                                        <div key={s} data-value={s} className={`swatch-element ${s.toLowerCase()} available`}>
+                                          <input
+                                            className="swatchInput"
+                                            id={`swatch-1-${s.toLowerCase()}`}
+                                            type="radio"
+                                            name="option-1"
+                                            value={s}
+                                            checked={size === s}
+                                            onChange={() => setSize(s)}
+                                          />
+                                          <label
+                                            className="swatchLbl medium rectangle"
+                                            htmlFor={`swatch-1-${s.toLowerCase()}`}
+                                            title={s}
+                                          >
+                                            {s}
+                                          </label>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+
+                                  <div className="product-action clearfix">
+                                    <div className="product-form__item--quantity">
+                                      <div className="wrapQtyBtn">
+                                        <div className="qtyField">
+                                          <a className="qtyBtn minus" onClick={decreaseQty} role="button">
+                                            <i className="fa anm anm-minus-r" aria-hidden="true"></i>
+                                          </a>
+                                          <input
+                                            type="text"
+                                            id="Quantity"
+                                            name="quantity"
+                                            className="product-form__input qty"
+                                            value={quantity}
+                                            onChange={handleQuantityChange}
+                                          />
+                                          <a className="qtyBtn plus" onClick={increaseQty} role="button">
+                                            <i className="fa anm anm-plus-r" aria-hidden="true"></i>
+                                          </a>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div className="product-form__item--submit">
+                                      <button
+                                        type="button"
+                                        name="add"
+                                        className="btn product-form__cart-submit"
+                                        onClick={handleSubmit}
+                                      >
+                                        <span>Add to cart</span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </form>
+                                <div className="display-table shareRow">
+                                  <div className="display-table-cell">
+                                    <div className="wishlist-btn">
+                                      <a className="wishlist add-to-wishlist" href="#"
+                                        title="Add to Wishlist"><i className="icon anm anm-heart-l"
+                                          aria-hidden="true"></i> <span>Add to Wishlist</span></a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

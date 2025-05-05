@@ -27,6 +27,8 @@ export default function HomePage() {
         <FeaturedProducts />
       </div>
       <LatestBlog />
+      <span id="site-scroll"><i className="icon anm anm-angle-up-r"></i></span>
+
     </div>
   )
 }
