@@ -15,7 +15,7 @@ const products = [
     discount: 16,
     rating: 3,
     variants: ["/images/product-images/variant1.jpg", "/images/product-images/variant2.jpg"],
-    link: "/short-description.html"
+    link: "/products/"
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const products = [
     rating: 5,
     discount: 16,
     variants: ["/images/product-images/variant2-1.jpg", "/images/product-images/variant2-2.jpg"],
-    link: "/short-description.html"
+    link: "/products/"
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const products = [
     hoverImage: "/images/product-images/product-image3-1.jpg",
     rating: 4,
     variants: ["/images/product-images/variant3-1.jpg", "/images/product-images/variant2.jpg"],
-    link: "/short-description.html"
+    link: "/products/"
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const products = [
     hoverImage: "/images/product-images/product-image4-1.jpg",
     rating: 4,
     variants: ["/images/product-images/variant4-1.jpg", "/images/product-images/variant2-2.jpg"],
-    link: "/short-description.html"
+    link: "/products/"
   },
   {
     id: 5,
@@ -56,7 +56,7 @@ const products = [
     hoverImage: "/images/product-images/product-image5-1.jpg",
     rating: 4,
     variants: ["/images/product-images/variant5-1.jpg", "/images/product-images/variant2.jpg"],
-    link: "/short-description.html"
+    link: "/products/"
   },
 ]
 
@@ -118,7 +118,7 @@ export default function SliderProduct() {
                     {products.map((product) => (
                       <div key={product.id} className="col-12 item">
                         <div className="product-image">
-                          <a href={product.link}>
+                          <a href={product.link+product.id}>
                             <Image className="primary blur-up lazyload" data-src={product.image} src={product.image} width={500} height={500} alt={product.name} title={product.name} />
                             <Image className="hover blur-up lazyload" data-src={product.hoverImage} src={product.hoverImage} width={500} height={500} alt={product.name} title={product.name} />
                           </a>

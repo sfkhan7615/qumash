@@ -5,26 +5,26 @@ const categories = [
   {
     id: "men",
     name: "Men",
-    image: "/images/product-images/mens_cat.webp",
-    href: "/categories/men",
+    image: "/images/product-images/men_category.webp",
+    href: "/products",
   },
   {
     id: "women",
     name: "Women",
     image: "/images/product-images/women_cat.webp",
-    href: "/categories/women",
+    href: "/products",
   },
   {
     id: "kids",
     name: "Kids",
     image: "/images/product-images/kids_cat.webp",
-    href: "/categories/kids",
+    href: "/products",
   },
   {
     id: "accessories",
     name: "Accessories",
     image: "/images/product-images/acceroies.webp",
-    href: "/categories/accessories",
+    href: "/products",
   },
 ]
 

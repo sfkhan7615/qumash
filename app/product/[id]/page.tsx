@@ -3,12 +3,12 @@
 export default function ProductPage() {
 
   return (
-    <div className="mt-20">
+    <div className="">
     <div id="MainContent" className="main-content" role="main">
 
       <div className="bredcrumbWrap">
         <div className="container breadcrumbs">
-          <a href="index.html" title="Back to the home page">Home</a><span
+          <a href="/" title="Back to the home page">Home</a><span
             aria-hidden="true"></span><span>Product</span>
         </div>
       </div>

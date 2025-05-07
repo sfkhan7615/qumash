@@ -35,10 +35,7 @@ export default function MainHeader() {
                   <a href="/">Home <i className="anm anm-angle-down-l"></i></a>
                 </li>
                 <li className="lvl1 parent megamenu">
-                  <a href="/shop">Shop <i className="anm anm-angle-down-l"></i></a>
-                </li>
-                <li className="lvl1 parent megamenu">
-                  <a href="/product">Product <i className="anm anm-angle-down-l"></i></a>
+                  <a href="/products">Products <i className="anm anm-angle-down-l"></i></a>
                 </li>
                 <li className="lvl1 parent dropdown">
                   <a href="/contact">Contact Us <i className="anm anm-angle-down-l"></i></a>

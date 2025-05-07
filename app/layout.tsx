@@ -142,13 +142,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <MobileHeader />
             <CartProvider>
               <div id="page-content" className="flex min-h-screen flex-col">
-                <main className="flex-1">{children}</main>
-                <Footer />
+                <div className="mt-20">
+                  <main className="flex-1">{children}</main>
+                  <Footer />
+                </div>
               </div>
               <Toaster />
             </CartProvider>
           </div>
-          
+
         </body>
       </html>
     </>
