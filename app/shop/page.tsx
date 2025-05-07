@@ -326,17 +326,22 @@ export default function ShopPage() {
                     <div className="col-4 col-md-4 col-lg-4 text-right">
                       <div className="filters-toolbar__item">
                         <label htmlFor="SortBy" className="hidden">Sort</label>
-                        <select name="SortBy" id="SortBy"
-                          className="filters-toolbar__input filters-toolbar__input--sort">
-                          <option value="title-ascending" selected>Sort</option>
-                          <option>Best Selling</option>
-                          <option>Alphabetically, A-Z</option>
-                          <option>Alphabetically, Z-A</option>
-                          <option>Price, low to high</option>
-                          <option>Price, high to low</option>
-                          <option>Date, new to old</option>
-                          <option>Date, old to new</option>
+                        <select
+                          name="SortBy"
+                          id="SortBy"
+                          className="filters-toolbar__input filters-toolbar__input--sort"
+                          defaultValue="title-ascending"
+                        >
+                          <option value="title-ascending">Sort</option>
+                          <option value="best-selling">Best Selling</option>
+                          <option value="az">Alphabetically, A-Z</option>
+                          <option value="za">Alphabetically, Z-A</option>
+                          <option value="price-low-high">Price, low to high</option>
+                          <option value="price-high-low">Price, high to low</option>
+                          <option value="new-old">Date, new to old</option>
+                          <option value="old-new">Date, old to new</option>
                         </select>
+
                         <input className="collection-header__default-sort" type="hidden"
                           value="manual" />
                       </div>

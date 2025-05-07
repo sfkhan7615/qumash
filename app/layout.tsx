@@ -1,13 +1,11 @@
 'use client'; // Marking this file as a Client Component
 
+import Script from 'next/script'; // Import next/script for optimized script loading
 import React, { useEffect } from "react";
-import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/components/cart/cart-context";
-import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import "./globals.css";
-import Script from 'next/script'; // Import next/script for optimized script loading
 import TopHeader from "@/components/layout/top-header";
 import $ from 'jquery';
 import "jquery.cookie"; // Import the jQuery Cookie plugin
@@ -63,23 +61,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <link rel="stylesheet" href="/css/bootstrap.min.css" />
           <link rel="stylesheet" href="/css/style.css" />
           <link rel="stylesheet" href="/css/responsive.css" />
-        </head>
-        <body className="template-index belle template-index-belle">
-          <div id="pre-loader">
-            <img src="/images/loader.gif" alt="Loading..." />
-          </div>
-          <div className="pageWrapper">
-            <TopHeader />
-            <MainHeader />
-            <MobileHeader />
-            <CartProvider>
-              <div id="page-content" className="flex min-h-screen flex-col">
-                <main className="flex-1">{children}</main>
-                <Footer />
-              </div>
-              <Toaster />
-            </CartProvider>
-          </div>
           {/* Load jQuery before interactive */}
           <Script
             src="/js/vendor/jquery-3.3.1.min.js"
@@ -150,6 +131,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               });
             `}
           </Script>
+        </head>
+        <body className="template-index belle template-index-belle">
+          <div id="pre-loader">
+            <img src="/images/loader.gif" alt="Loading..." />
+          </div>
+          <div className="pageWrapper">
+            <TopHeader />
+            <MainHeader />
+            <MobileHeader />
+            <CartProvider>
+              <div id="page-content" className="flex min-h-screen flex-col">
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </div>
+              <Toaster />
+            </CartProvider>
+          </div>
+          
         </body>
       </html>
     </>

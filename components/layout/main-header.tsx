@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import SiteCart from "./site-cart";
 
 export default function MainHeader() {
@@ -10,13 +9,12 @@ export default function MainHeader() {
         <div className="row align-items-center">
           {/* Desktop Logo */}
           <div className="logo col-md-2 col-lg-2 d-none d-lg-block">
-            <Link href="/">
+            <a href="/" title="Qumash - Wear The Vibe">
               <img
                 src="/images/b-removebg-preview-size.png"
                 alt="Qumash - Wear The Vibe"
-                title="Qumash - Wear The Vibe"
               />
-            </Link>
+            </a>
           </div>
 
           {/* Navigation */}
@@ -34,24 +32,24 @@ export default function MainHeader() {
             <nav className="grid__item" id="AccessibleNav">
               <ul id="siteNav" className="site-nav medium center hidearrow">
                 <li className="lvl1 parent megamenu">
-                  <Link href="/">Home <i className="anm anm-angle-down-l"></i></Link>
+                  <a href="/">Home <i className="anm anm-angle-down-l"></i></a>
                 </li>
                 <li className="lvl1 parent megamenu">
-                  <Link href="/shop">Shop <i className="anm anm-angle-down-l"></i></Link>
+                  <a href="/shop">Shop <i className="anm anm-angle-down-l"></i></a>
                 </li>
                 <li className="lvl1 parent megamenu">
-                  <Link href="/product">Product <i className="anm anm-angle-down-l"></i></Link>
+                  <a href="/product">Product <i className="anm anm-angle-down-l"></i></a>
                 </li>
                 <li className="lvl1 parent dropdown">
-                  <Link href="/contact">Contact Us <i className="anm anm-angle-down-l"></i></Link>
+                  <a href="/contact">Contact Us <i className="anm anm-angle-down-l"></i></a>
                 </li>
                 <li className="lvl1 parent dropdown">
-                  <Link href="/blog">Blog <i className="anm anm-angle-down-l"></i></Link>
+                  <a href="/blog">Blog <i className="anm anm-angle-down-l"></i></a>
                 </li>
                 <li className="lvl1">
-                  <Link href="/buy">
+                  <a href="/buy">
                     <b>Buy Now!</b> <i className="anm anm-angle-down-l"></i>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -60,13 +58,12 @@ export default function MainHeader() {
           {/* Mobile Logo */}
           <div className="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
             <div className="logo">
-              <Link href="/">
+              <a href="/" title="Qumash - Wear The Vibe">
                 <img
                   src="/images/b-removebg-preview-size.png"
                   alt="Qumash - Wear The Vibe"
-                  title="Qumash - Wear The Vibe"
                 />
-              </Link>
+              </a>
             </div>
           </div>
 

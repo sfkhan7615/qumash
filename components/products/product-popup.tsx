@@ -16,7 +16,7 @@ export default function ProductPopup() {
                   <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                     <div className="product-details-img">
                       <div className="pl-20">
-                        <img src="assets/images/product-detail-page/camelia-reversible-big1.jpg"
+                        <img src="/images/product-detail-page/camelia-reversible-big1.jpg"
                           alt="" />
                       </div>
                     </div>
@@ -60,7 +60,7 @@ export default function ProductPopup() {
                                 name="option-0" value="Red" />
                               <label className="swatchLbl color medium rectangle"
                                 htmlFor="swatch-0-red"
-                                style={{ backgroundImage: "url(assets/images/product-detail-page/variant1-1.jpg)" }}
+                                style={{ backgroundImage: "url(/images/product-detail-page/variant1-1.jpg)" }}
                                 title="Red"></label>
                             </div>
                             <div data-value="Blue"
@@ -69,7 +69,7 @@ export default function ProductPopup() {
                                 name="option-0" value="Blue" />
                               <label className="swatchLbl color medium rectangle"
                                 htmlFor="swatch-0-blue"
-                                style={{ backgroundImage: "url(assets/images/product-detail-page/variant1-2.jpg)" }}
+                                style={{ backgroundImage: "url(/images/product-detail-page/variant1-2.jpg)" }}
                                 title="Blue"></label>
                             </div>
                             <div data-value="Green"
@@ -78,7 +78,7 @@ export default function ProductPopup() {
                                 name="option-0" value="Green" />
                               <label className="swatchLbl color medium rectangle"
                                 htmlFor="swatch-0-green"
-                                style={{ backgroundImage: "url(assets/images/product-detail-page/variant1-3.jpg)" }}
+                                style={{ backgroundImage: "url(/images/product-detail-page/variant1-3.jpg)" }}
                                 title="Green"></label>
                             </div>
                             <div data-value="Gray"
@@ -87,7 +87,7 @@ export default function ProductPopup() {
                                 name="option-0" value="Gray" />
                               <label className="swatchLbl color medium rectangle"
                                 htmlFor="swatch-0-gray"
-                                style={{ backgroundImage: "url(assets/images/product-detail-page/variant1-4.jpg)" }}
+                                style={{ backgroundImage: "url(/images/product-detail-page/variant1-4.jpg)" }}
                                 title="Gray"></label>
                             </div>
                           </div>
