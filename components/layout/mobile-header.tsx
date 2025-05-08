@@ -17,13 +17,13 @@ export default function MobileHeader() {
           <a href="/contact">Contact Us</a>
         </li>
         <li className="lvl1 parent megamenu">
-          <a href="/blog">Blog</a>
+          <a href="/blogs">Blog</a>
         </li>
-        <li className="lvl1">
+        {/* <li className="lvl1">
           <a href="/buy">
             <strong>Buy Now!</strong>
           </a>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

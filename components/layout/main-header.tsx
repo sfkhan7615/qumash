@@ -41,13 +41,13 @@ export default function MainHeader() {
                   <a href="/contact">Contact Us <i className="anm anm-angle-down-l"></i></a>
                 </li>
                 <li className="lvl1 parent dropdown">
-                  <a href="/blog">Blog <i className="anm anm-angle-down-l"></i></a>
+                  <a href="/blogs">Blog <i className="anm anm-angle-down-l"></i></a>
                 </li>
-                <li className="lvl1">
+                {/* <li className="lvl1">
                   <a href="/buy">
                     <b>Buy Now!</b> <i className="anm anm-angle-down-l"></i>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>
