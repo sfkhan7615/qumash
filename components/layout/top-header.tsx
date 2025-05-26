@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 export default function TopHeader() {
 
   return (
@@ -28,9 +30,9 @@ export default function TopHeader() {
           <div className="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
             <span className="user-menu d-block d-lg-none"><i className="anm anm-user-al" aria-hidden="true"></i></span>
             <ul className="customer-links list-inline">
-              <li><a href="login.html">Login</a></li>
-              <li><a href="register.html">Create Account</a></li>
-              <li><a href="wishlist.html">Wishlist</a></li>
+              <li><Link href="/login">Login</Link></li>
+              <li><Link href="/register">Create Account</Link></li>
+              <li><Link href="/wishlist">Wishlist</Link></li>
             </ul>
           </div>
         </div>

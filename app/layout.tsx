@@ -136,14 +136,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div id="pre-loader">
             <img src="/images/loader.gif" alt="Loading..." />
           </div>
-          <div className="pageWrapper">
+          <div className="pageWrapper bg-white">
             <TopHeader />
             <MainHeader />
             <MobileHeader />
             <CartProvider>
               <div id="page-content" className="flex min-h-screen flex-col">
-                <div className="mt-20">
-                  <main className="flex-1">{children}</main>
+                <div className="mt-5">
+                  <main className="flex-1 mt-1">{children}</main>
                   <Footer />
                 </div>
               </div>
