@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SiteCart from "./site-cart";
+import { useMobileDetection } from "@/hooks/use-mobile-detection";
 
 export default function MainHeader() {
   const pathname = usePathname();
@@ -30,7 +31,7 @@ export default function MainHeader() {
   }, [pathname]);
 
   return (
-    <div className="header-wrap classicHeader animated d-flex">
+    <div className="header-wrap classicHeader animated d-flex" suppressHydrationWarning>
       <div className="container-fluid">
         <div className="row align-items-center">
           {/* Desktop Logo */}
