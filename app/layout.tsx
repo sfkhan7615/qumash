@@ -291,18 +291,132 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning style={{ visibility: 'visible' }}>
         <head>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <title>Qumash | Wear The Vibe</title>
           <meta name="description" content="Coming soon" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
           <link rel="shortcut icon" href="/images/favicon.png" />
+          
+          {/* Load critical mobile CSS first */}
+          <link rel="stylesheet" href="/css/mobile-critical.css" />
+          
+          {/* Critical mobile-first CSS - loaded inline for immediate application */}
+          <style dangerouslySetInnerHTML={{
+            __html: `
+              /* Critical mobile styles */
+              html.mobile-device .d-lg-block,
+              @media (max-width: 767px) {
+                .d-lg-block { display: none !important; }
+              }
+              
+              html.mobile-device .d-block.d-lg-none,
+              @media (max-width: 767px) {
+                .d-block.d-lg-none { display: block !important; }
+              }
+              
+              html.mobile-device .mobile-nav-wrapper,
+              @media (max-width: 767px) {
+                .mobile-nav-wrapper { 
+                  position: fixed;
+                  top: 0;
+                  left: -100%;
+                  width: 280px;
+                  height: 100vh;
+                  background: #fff;
+                  z-index: 9999;
+                  transition: left 0.3s ease;
+                }
+                .mobile-nav-wrapper.active { left: 0; }
+              }
+              
+              html.mobile-device .header-wrap,
+              @media (max-width: 767px) {
+                .header-wrap { padding: 10px 0; }
+                .logo img { max-height: 40px; }
+                .site-nav { display: none; }
+                .mobile-logo { text-align: center; }
+                .container-fluid { padding: 0 15px; }
+                .row { margin: 0; }
+                .col-2, .col-4, .col-6, .col-sm-3, .col-sm-6, .col-md-3, .col-md-6 { 
+                  padding: 0 5px; 
+                }
+              }
+              
+              @media (min-width: 768px) {
+                .d-none.d-lg-block { display: block !important; }
+                .d-block.d-lg-none { display: none !important; }
+                .mobile-nav-wrapper { display: none; }
+              }
+              
+              /* Prevent layout shift */
+              .pageWrapper {
+                min-height: 100vh;
+                opacity: 1;
+              }
+              
+              /* Smooth transitions */
+              * {
+                -webkit-transition: none !important;
+                -moz-transition: none !important;
+                -o-transition: none !important;
+                transition: none !important;
+              }
+              
+              /* Force immediate mobile styles */
+              body {
+                overflow-x: hidden;
+              }
+            `
+          }} />
+          
           <link rel="stylesheet" href="/css/plugins.css" />
           <link rel="stylesheet" href="/css/bootstrap.min.css" />
           <link rel="stylesheet" href="/css/style.css" />
           <link rel="stylesheet" href="/css/responsive.css" />
+          
+          {/* Immediate mobile detection and styling */}
+          <script dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Immediate mobile detection
+                var isMobile = function() {
+                  var userAgent = navigator.userAgent.toLowerCase();
+                  var mobileKeywords = ['mobile', 'android', 'iphone', 'ipad', 'ipod', 'blackberry', 'windows phone'];
+                  var isMobileDevice = mobileKeywords.some(function(keyword) { 
+                    return userAgent.includes(keyword); 
+                  });
+                  return isMobileDevice || window.innerWidth <= 768;
+                };
+                
+                var applyMobileClasses = function() {
+                  if (isMobile()) {
+                    document.documentElement.classList.remove('desktop-device');
+                    document.documentElement.classList.add('mobile-device');
+                    document.body.classList.add('mobile-view');
+                  } else {
+                    document.documentElement.classList.remove('mobile-device');
+                    document.documentElement.classList.add('desktop-device');
+                    document.body.classList.remove('mobile-view');
+                  }
+                };
+                
+                // Apply mobile class immediately
+                applyMobileClasses();
+                
+                // Listen for resize and orientation changes
+                window.addEventListener('resize', applyMobileClasses);
+                window.addEventListener('orientationchange', function() {
+                  setTimeout(applyMobileClasses, 100);
+                });
+                
+                // Prevent flash of unstyled content
+                document.documentElement.style.visibility = 'visible';
+              })();
+            `
+          }} />
           
           {/* Load scripts in the correct order */}
           <Script
@@ -310,7 +424,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             strategy="beforeInteractive"
           />
         </head>
-        <body className="template-index belle template-index-belle">
+        <body className="template-index belle template-index-belle" suppressHydrationWarning>
           <div id="pre-loader">
             <img src="/images/loader.gif" alt="Loading..." />
           </div>

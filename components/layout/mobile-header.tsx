@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useMobileDetection } from "@/hooks/use-mobile-detection";
 
 export default function MobileHeader() {
+  const { isMobile, isLoaded } = useMobileDetection();
+  
   return (
-    <div className="mobile-nav-wrapper" role="navigation">
+    <div className="mobile-nav-wrapper" role="navigation" suppressHydrationWarning>
       <div className="closemobileMenu">
         <i className="icon anm anm-times-l pull-right"></i> <strong>QUMASH</strong>
       </div>
