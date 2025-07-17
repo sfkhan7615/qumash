@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import SiteCart from "./site-cart";
 
 export default function MainHeader() {
