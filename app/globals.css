@@ -478,6 +478,32 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder { opacity:1; -ms-fil
 .slideshow .btn { color:#fff; background-color:#000; }
 .slideshow .btn:hover, .slideshow .btn:focus { opacity:0.8; }
 
+/* Add responsive styles for the slideshow */
+@media only screen and (max-width: 767px) {
+  .slideshow .slide {
+    min-height: 400px;
+  }
+  .slideshow .bg-size {
+    min-height: 400px;
+    background-size: cover !important;
+  }
+  .slideshow .bg-img {
+    min-height: 400px;
+    object-fit: cover;
+    width: 100%;
+  }
+  .slideshow .slideshow__title {
+    font-size: 32px;
+  }
+  .slideshow .slideshow__subtitle {
+    font-size: 16px;
+    display: block !important;
+  }
+  .slideshow__text-content {
+    margin-top: 0;
+  }
+}
+
 /*======================================================================
   11. Section
 ========================================================================*/

@@ -1,15 +1,15 @@
-'use client'; // Marking this file as a Client Component
+"use client";
 
-import Script from 'next/script'; // Import next/script for optimized script loading
+import Script from 'next/script';
 import React, { useEffect, useRef } from "react";
 import { usePathname } from 'next/navigation';
 import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/components/cart/cart-context";
 import Footer from "@/components/layout/footer";
-import "./globals.css";
 import TopHeader from "@/components/layout/top-header";
 import MainHeader from "@/components/layout/main-header";
 import MobileHeader from "@/components/layout/mobile-header";
+import "./globals.css";
 
 // Declare jQuery for TypeScript
 declare const $: any;
@@ -17,9 +17,33 @@ declare const jQuery: any;
 declare const WOW: any;
 declare const Cookies: any;
 
+// Add type for event handlers
+type EventHandler = (this: HTMLElement, event?: Event) => void;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const scriptsLoadedRef = useRef(false);
+
+  // Effect to clean up mobile menu state
+  useEffect(() => {
+    const cleanup = () => {
+      // Remove any lingering mobile menu classes
+      document.body.classList.remove("menuOn");
+      const mobileNav = document.querySelector(".mobile-nav-wrapper");
+      if (mobileNav) {
+        mobileNav.classList.remove("active");
+      }
+      const menuToggle = document.querySelector(".js-mobile-nav-toggle");
+      if (menuToggle) {
+        menuToggle.classList.remove("mobile-nav--close");
+        menuToggle.classList.add("mobile-nav--open");
+      }
+    };
+
+    // Clean up on mount and route changes
+    cleanup();
+    return () => cleanup();
+  }, [pathname]); // Run cleanup when route changes
 
   // Function to initialize all JavaScript functionality
   const initializeJavaScript = () => {
@@ -60,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       $('#pre-loader').delay(0).fadeOut('slow');
 
       // 2. Promotional Bar Header
-      $(".closeHeader").off('click').on('click', function() {
+      $(".closeHeader").off('click').on('click', function(this: HTMLElement) {
         $(".promotion-header").slideUp();
         if (typeof Cookies !== 'undefined') {
           Cookies.set('promotion', 'true', { expires: 1});
@@ -69,23 +93,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       });
 
       // 3. Currency dropdown
-      $(".selected-currency").off('click').on("click", function() {
+      $(".selected-currency").off('click').on("click", function(this: HTMLElement) {
         $("#currencies").slideToggle();
       });
-      $("#currencies li").off('click').on("click", function() {
+      $("#currencies li").off('click').on("click", function(this: HTMLElement) {
         $(this).parent().slideUp();
       });
 
       // 4. Language dropdown
-      $(".language-dd").off('click').on("click", function() {
+      $(".language-dd").off('click').on("click", function(this: HTMLElement) {
         $("#language").slideToggle();
       });
-      $("#language li").off('click').on("click", function() {
+      $("#language li").off('click').on("click", function(this: HTMLElement) {
         $(this).parent().slideUp();
       });
 
       // 5. Top Links dropdown
-      $('.top-header .user-menu').off('click').on("click", function() {
+      $('.top-header .user-menu').off('click').on("click", function(this: HTMLElement) {
         if ($(window).width() < 990) {
           $(this).next().slideToggle(300);
           $(this).parent().toggleClass("active");
@@ -93,13 +117,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       });
 
       // 6. Minicart Dropdown
-      $(".site-header__cart").on("click", function(i) {
-        i.preventDefault();
+      $(".site-header__cart").on("click", function(e: Event) {
+        e.preventDefault();
         $("#header-cart").slideToggle();
       });
       
-      $("body").off("click.minicart").on("click.minicart", function(event) {
-        var $target = $(event.target);
+      $("body").off("click.minicart").on("click.minicart", function(event: Event) {
+        const $target = $(event.target);
         if (!$target.parents().is(".site-cart") && !$target.is(".site-cart")) {
           $("body").find("#header-cart").slideUp();
         }
@@ -116,14 +140,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         }
       });
 
-      $(document).off('click.search').on('click.search', function(event) {
+      $(document).off('click.search').on('click.search', function(event: Event) {
         if (!$(event.target).closest('.search, .search-trigger').length) {
           $('.search').removeClass('search--opened');
         }
       });
 
       // 9. Mobile Menu
-      var selectors = {
+      const selectors = {
         body: 'body',
         sitenav: '#siteNav',
         navLinks: '#siteNav .lvl1 > a',
@@ -133,24 +157,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         closemenu: '.closemobileMenu'
       };
 
-      $(selectors.navLinks).each(function() {
-        if ($(this).attr('href') == window.location.pathname) $(this).addClass('active');
+      $(selectors.navLinks).each(function(this: HTMLElement) {
+        if ($(this).attr('href') === window.location.pathname) $(this).addClass('active');
       });
 
-      $(selectors.menuToggle).on("click", function() {
+      $(selectors.menuToggle).on("click", function(this: HTMLElement) {
         $(selectors.mobilenav).toggleClass("active");
         $(selectors.body).toggleClass("menuOn");
         $(selectors.menuToggle).toggleClass('mobile-nav--open mobile-nav--close');
       });
 
-      $(selectors.closemenu).on("click", function() {
+      $(selectors.closemenu).on("click", function(this: HTMLElement) {
         $(selectors.mobilenav).toggleClass("active");
         $(selectors.body).toggleClass("menuOn");
         $(selectors.menuToggle).toggleClass('mobile-nav--open mobile-nav--close');
       });
 
-      $("body").off('click.mobilemenu').on('click.mobilemenu', function(event) {
-        var $target = $(event.target);
+      $("body").off('click.mobilemenu').on('click.mobilemenu', function(event: Event) {
+        const $target = $(event.target);
         if (!$target.parents().is(selectors.mobilenav) && !$target.parents().is(selectors.menuToggle) && !$target.is(selectors.menuToggle)) {
           $(selectors.mobilenav).removeClass("active");
           $(selectors.body).removeClass("menuOn");
@@ -158,7 +182,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         }
       });
 
-      $(selectors.menuLinks).off('click').on('click', function(e) {
+      $(selectors.menuLinks).off('click').on('click', function(e: Event) {
         e.preventDefault();
         $(this).toggleClass('anm-plus-l anm-minus-l');
         $(this).parent().next().slideToggle();
@@ -178,8 +202,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               arrows: true,
               autoplay: true,
               autoplaySpeed: 4000,
-              lazyLoad: 'ondemand'
+              lazyLoad: 'ondemand',
+              adaptiveHeight: false // Disable adaptive height
             });
+
+            // Handle banner size on window resize
+            $(window).on('resize', function() {
+              const minHeight = 400; // Minimum height for mobile
+              const windowWidth = $(window).width();
+              const slideHeight = windowWidth <= 767 ? minHeight : 'auto';
+              
+              $('.slideshow .slide, .slideshow .bg-size, .slideshow .bg-img').css({
+                'min-height': slideHeight
+              });
+            }).trigger('resize'); // Trigger resize on load
           }
 
           // Product Sliders
@@ -198,7 +234,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             });
           }
 
-          // Other sliders...
+          // Collection Grid
           if ($('.collection-grid').length && !$('.collection-grid').hasClass('slick-initialized')) {
             $('.collection-grid').slick({
               dots: false,
@@ -219,18 +255,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         }
       }, 100);
 
-      
-
       // Quantity Plus Minus
-      $(".qtyBtn").off('click').on("click", function() {
-        var qtyField = $(this).parent(".qtyField"),
-           oldValue = $(qtyField).find(".qty").val(),
-            newVal = 1;
+      $(".qtyBtn").off('click').on("click", function(this: HTMLElement) {
+        const qtyField = $(this).parent(".qtyField");
+        const oldValue = $(qtyField).find(".qty").val();
+        let newVal = 1;
 
         if ($(this).is(".plus")) {
-          newVal = parseInt(oldValue) + 1;
+          newVal = parseInt(oldValue as string) + 1;
         } else if (oldValue > 1) {
-          newVal = parseInt(oldValue) - 1;
+          newVal = parseInt(oldValue as string) - 1;
         }
         $(qtyField).find(".qty").val(newVal);
       });
@@ -239,9 +273,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       $(".tab_content").hide();
       $(".tab_content:first").show();
 
-      $("ul.tabs li").off('click').on('click', function() {
+      $("ul.tabs li").off('click').on('click', function(this: HTMLElement) {
         $(".tab_content").hide();
-        var activeTab = $(this).attr("rel");
+        const activeTab = $(this).attr("rel");
         $("#" + activeTab).fadeIn();
 
         $("ul.tabs li").removeClass("active");
@@ -270,10 +304,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // Effect for handling route changes and script initialization
   useEffect(() => {
     if (scriptsLoadedRef.current) {
-      // Scripts are loaded, initialize JavaScript
       setTimeout(initializeJavaScript, 100);
     }
-  }, [pathname]); // Re-run when pathname changes
+  }, [pathname]);
 
   // Effect for initial script loading
   useEffect(() => {
@@ -290,83 +323,79 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   }, []);
 
   return (
-    <>
-      <html lang="en">
-        <head>
-          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <title>Qumash | Wear The Vibe</title>
-          <meta name="description" content="Coming soon" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="shortcut icon" href="/images/favicon.png" />
-          <link rel="stylesheet" href="/css/plugins.css" />
-          <link rel="stylesheet" href="/css/bootstrap.min.css" />
-          <link rel="stylesheet" href="/css/style.css" />
-          <link rel="stylesheet" href="/css/responsive.css" />
-          
-          {/* Load scripts in the correct order */}
-          <Script
-            src="/js/vendor/jquery-3.3.1.min.js"
-            strategy="beforeInteractive"
-          />
-        </head>
-        <body className="template-index belle template-index-belle">
-          <div id="pre-loader">
-            <img src="/images/loader.gif" alt="Loading..." />
-          </div>
+    <html lang="en">
+      <head>
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        <title>Qumash | Wear The Vibe</title>
+        <meta name="description" content="Coming soon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="/images/favicon.png" />
+        <link rel="stylesheet" href="/css/plugins.css" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/responsive.css" />
+        
+        {/* Load scripts in the correct order */}
+        <Script
+          src="/js/vendor/jquery-3.3.1.min.js"
+          strategy="beforeInteractive"
+        />
+      </head>
+      <body className="template-index belle template-index-belle">
+        <div id="pre-loader">
+          <img src="/images/loader.gif" alt="Loading..." />
+        </div>
 
-
-
-          <div className="pageWrapper bg-white">
-            <TopHeader />
-            <MainHeader />
-            <MobileHeader />
-            <CartProvider>
-              <div id="page-content" className="flex min-h-screen flex-col">
-                <div className="mt-5">
-                  <main className="flex-1 mt-1">{children}</main>
-                  <Footer />
-                </div>
+        <div className="pageWrapper bg-white">
+          <TopHeader />
+          <MainHeader />
+          <MobileHeader />
+          <CartProvider>
+            <div id="page-content" className="flex min-h-screen flex-col">
+              <div className="mt-5">
+                <main className="flex-1 mt-1">{children}</main>
+                <Footer />
               </div>
-              <Toaster />
-            </CartProvider>
-          </div>
+            </div>
+            <Toaster />
+          </CartProvider>
+        </div>
 
-          {/* Load remaining scripts after interactive */}
-          <Script
-            src="/js/vendor/jquery.cookie.js"
-            strategy="afterInteractive"
-          />
-          <Script
-            src="/js/vendor/wow.min.js"
-            strategy="afterInteractive"
-          />
-          <Script
-            src="/js/bootstrap.min.js"
-            strategy="afterInteractive"
-          />
-          <Script
-            src="/js/plugins.js"
-            strategy="afterInteractive"
-          />
-          <Script
-            src="/js/popper.min.js"
-            strategy="afterInteractive"
-          />
-          <Script
-            src="/js/lazysizes.js"
-            strategy="afterInteractive"
-          />
-          <Script
-            src="/js/main.js"
-            strategy="afterInteractive"
-            onLoad={() => {
-              scriptsLoadedRef.current = true;
-              setTimeout(initializeJavaScript, 100);
-            }}
-          />
-        </body>
-      </html>
-    </>
+        {/* Load remaining scripts after interactive */}
+        <Script
+          src="/js/vendor/jquery.cookie.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/js/vendor/wow.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/js/bootstrap.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/js/plugins.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/js/popper.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/js/lazysizes.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/js/main.js"
+          strategy="afterInteractive"
+          onLoad={() => {
+            scriptsLoadedRef.current = true;
+            setTimeout(initializeJavaScript, 100);
+          }}
+        />
+      </body>
+    </html>
   );
 }

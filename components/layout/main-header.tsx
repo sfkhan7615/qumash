@@ -1,11 +1,37 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import SiteCart from "./site-cart";
+import { useMobileDetection } from "@/hooks/use-mobile-detection";
 
 export default function MainHeader() {
+  const pathname = usePathname();
+
+  // Clean up mobile menu state when route changes
+  useEffect(() => {
+    const cleanup = () => {
+      document.body.classList.remove("menuOn");
+      const mobileNav = document.querySelector(".mobile-nav-wrapper");
+      if (mobileNav) {
+        mobileNav.classList.remove("active");
+      }
+      const menuToggle = document.querySelector(".js-mobile-nav-toggle");
+      if (menuToggle) {
+        menuToggle.classList.remove("mobile-nav--close");
+        menuToggle.classList.add("mobile-nav--open");
+      }
+    };
+
+    // Clean up on mount and route changes
+    cleanup();
+    
+    return () => cleanup();
+  }, [pathname]);
+
   return (
-    <div className="header-wrap classicHeader animated d-flex">
+    <div className="header-wrap classicHeader animated d-flex" suppressHydrationWarning>
       <div className="container-fluid">
         <div className="row align-items-center">
           {/* Desktop Logo */}

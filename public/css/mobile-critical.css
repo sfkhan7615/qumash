@@ -1,0 +1,152 @@
+/* Critical Mobile CSS - Loaded first to prevent desktop flash */
+
+/* Mobile-first approach */
+@media screen and (max-width: 767px) {
+  /* Hide desktop elements immediately */
+  .d-lg-block {
+    display: none !important;
+  }
+  
+  /* Show mobile elements immediately */
+  .d-block.d-lg-none {
+    display: block !important;
+  }
+  
+  /* Mobile navigation */
+  .mobile-nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .mobile-nav-wrapper.active {
+    left: 0;
+  }
+  
+  /* Header adjustments */
+  .header-wrap {
+    padding: 10px 0 !important;
+  }
+  
+  .logo img {
+    max-height: 40px !important;
+    width: auto !important;
+  }
+  
+  /* Hide desktop navigation */
+  .site-nav {
+    display: none !important;
+  }
+  
+  /* Mobile logo centering */
+  .mobile-logo {
+    text-align: center !important;
+  }
+  
+  /* Container adjustments */
+  .container-fluid {
+    padding: 0 15px !important;
+  }
+  
+  .row {
+    margin: 0 !important;
+  }
+  
+  /* Column adjustments */
+  .col-2, .col-4, .col-6, 
+  .col-sm-3, .col-sm-6, 
+  .col-md-3, .col-md-6 {
+    padding: 0 5px !important;
+  }
+  
+  /* Mobile menu button */
+  .js-mobile-nav-toggle {
+    display: block !important;
+    border: none;
+    background: transparent;
+    padding: 5px;
+  }
+  
+  /* Body adjustments */
+  body {
+    overflow-x: hidden !important;
+  }
+  
+  /* Page wrapper */
+  .pageWrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 768px) {
+  .d-none.d-lg-block {
+    display: block !important;
+  }
+  
+  .d-block.d-lg-none {
+    display: none !important;
+  }
+  
+  .mobile-nav-wrapper {
+    display: none !important;
+  }
+  
+  .site-nav {
+    display: flex !important;
+  }
+}
+
+/* Prevent layout shift during load */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Immediate mobile device targeting */
+html.mobile-device .d-lg-block {
+  display: none !important;
+}
+
+html.mobile-device .d-block.d-lg-none {
+  display: block !important;
+}
+
+html.mobile-device .site-nav {
+  display: none !important;
+}
+
+html.mobile-device .mobile-nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  z-index: 9999;
+}
+
+/* Desktop device targeting */
+html.desktop-device .mobile-nav-wrapper {
+  display: none !important;
+}
+
+html.desktop-device .d-block.d-lg-none {
+  display: none !important;
+}
+
+html.desktop-device .d-lg-block {
+  display: block !important;
+} 

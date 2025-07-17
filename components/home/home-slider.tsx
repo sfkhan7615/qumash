@@ -37,6 +37,7 @@ export default function HeroCarousel() {
                 src={slide.image}
                 alt={slide.alt}
                 title={slide.title}
+                style={{ minHeight: '400px', objectFit: 'cover' }}
               />
               <div className="slideshow__text-wrap slideshow__overlay classic bottom">
                 <div className="slideshow__text-content bottom">
