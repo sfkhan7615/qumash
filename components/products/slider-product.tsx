@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
 // Sample products for each category
@@ -118,10 +119,10 @@ export default function SliderProduct() {
                     {products.map((product) => (
                       <div key={product.id} className="col-12 item">
                         <div className="product-image">
-                          <a href={product.link+product.id}>
+                          <Link href={product.link+product.id}>
                             <Image className="primary blur-up lazyload" data-src={product.image} src={product.image} width={500} height={500} alt={product.name} title={product.name} />
                             <Image className="hover blur-up lazyload" data-src={product.hoverImage} src={product.hoverImage} width={500} height={500} alt={product.name} title={product.name} />
-                          </a>
+                          </Link>
                           <div className="product-labels rectangular">
                             <span className="lbl on-sale">{product.discount}% OFF</span>
                           </div>
@@ -146,7 +147,7 @@ export default function SliderProduct() {
                         </div>
                         <div className="product-details text-center">
                           <div className="product-name">
-                            <a href={product.link}>{product.name}</a>
+                            <Link href={product.link+product.id}>{product.name}</Link>
                           </div>
                           <div className="product-price">
                             {product.oldPrice && <span className="old-price">{product.oldPrice}</span>}

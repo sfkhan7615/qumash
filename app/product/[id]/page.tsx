@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 export default function ProductPage() {
 
   return (
@@ -8,7 +10,7 @@ export default function ProductPage() {
 
       <div className="bredcrumbWrap">
         <div className="container breadcrumbs">
-          <a href="/" title="Back to the home page">Home</a><span
+          <Link href="/" title="Back to the home page">Home</Link><span
             aria-hidden="true"></span><span>Product</span>
         </div>
       </div>

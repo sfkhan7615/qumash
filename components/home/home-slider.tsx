@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 const slides = [
   {
     id: 1,
@@ -41,7 +43,7 @@ export default function HeroCarousel() {
                   <div className="wrap-caption center">
                     <h2 className="h1 mega-title slideshow__title">{slide.title}</h2>
                     <span className="mega-subtitle slideshow__subtitle">{slide.subtitle}</span>
-                    <a href={slide.link} className="btn">{slide.cta}</a>
+                    <Link href={slide.link} className="btn">{slide.cta}</Link>
                   </div>
                 </div>
               </div>
