@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link";
+
 export default function ShopPage() {
   const categories = [
     { name: 'Clothing', subCategories: ['Men', 'Women', 'Child', 'View All Clothing'] },
@@ -104,12 +106,12 @@ export default function ShopPage() {
                         <div key={idx} className="grid__item">
                           <div className="mini-list-item">
                             <div className="mini-view_image">
-                              <a className="grid-view-item__link" href={`/product/${product.id}`}>
+                              <Link className="grid-view-item__link" href={`/product/${product.id}`}>
                                 <img className="grid-view-item__image" src={product.image} alt="" />
-                              </a>
+                              </Link>
                             </div>
                             <div className="details">
-                              <a className="grid-view-item__title" href={`/product/${product.id}`}>{product.title}</a>
+                              <Link className="grid-view-item__title" href={`/product/${product.id}`}>{product.title}</Link>
                               <div className="grid-view-item__meta">
                                 <span className="product-price__price"><span className="money">{product.price}</span></span>
                               </div>
@@ -169,14 +171,14 @@ export default function ShopPage() {
                   {products.map((product, idx) => (
                     <div key={idx} className="col-6 col-sm-6 col-md-4 col-lg-3 grid-view-item style2 item">
                       <div className="grid-view_image">
-                        <a href={`/product/${product.id}`} className="grid-view-item__link">
+                        <Link href={`/product/${product.id}`} className="grid-view-item__link">
                           <img className="grid-view-item__image primary blur-up lazyload" data-src={product.image} src={product.image} alt="image" title="product" />
                           <img className="grid-view-item__image hover blur-up lazyload" data-src={product.image} src={product.image} alt="image" title="product" />
                           <div className="product-labels rectangular">
                             {product.oldPrice && <span className="lbl on-sale">-16%</span>}
                             <span className="lbl pr-label1">new</span>
                           </div>
-                        </a>
+                        </Link>
 
                         <div className="product-details hoverDetails text-center mobile">
                           <div className="product-name">

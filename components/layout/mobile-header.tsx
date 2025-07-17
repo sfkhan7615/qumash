@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function MobileHeader() {
   return (
     <div className="mobile-nav-wrapper" role="navigation">
@@ -8,21 +10,21 @@ export default function MobileHeader() {
       </div>
       <ul id="MobileNav" className="mobile-nav">
         <li className="lvl1 parent megamenu">
-          <a href="/">Home</a>
+          <Link href="/">Home</Link>
         </li>
         <li className="lvl1 parent megamenu">
-          <a href="/products">Products</a>
+          <Link href="/products">Products</Link>
         </li>
         <li className="lvl1 parent megamenu">
-          <a href="/contact">Contact Us</a>
+          <Link href="/contact">Contact Us</Link>
         </li>
         <li className="lvl1 parent megamenu">
-          <a href="/blogs">Blog</a>
+          <Link href="/blogs">Blog</Link>
         </li>
         {/* <li className="lvl1">
-          <a href="/buy">
+          <Link href="/buy">
             <strong>Buy Now!</strong>
-          </a>
+          </Link>
         </li> */}
       </ul>
     </div>

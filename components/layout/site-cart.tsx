@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function SiteCart() {
   // Initialize the state for the cart items with quantity and price
@@ -125,8 +126,8 @@ export default function SiteCart() {
             </span>
           </div>
           <div className="buttonSet text-center">
-            <a href="cart.html" className="btn btn-secondary btn--small">View Cart</a>
-            <a href="checkout.html" className="btn btn-secondary btn--small">Checkout</a>
+            <Link href="/cart" className="btn btn-secondary btn--small">View Cart</Link>
+            <Link href="/checkout" className="btn btn-secondary btn--small">Checkout</Link>
           </div>
         </div>
       </div>
